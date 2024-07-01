@@ -41,6 +41,7 @@ def home():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    error = None
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
@@ -48,19 +49,27 @@ def login():
         if user and user.password == password:
             login_user(user)
             return redirect(url_for('dashboard'))
-    return render_template('login.html')
+        else:
+            error = 'Invalid username or password'
+    return render_template('login.html', error=error)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    error = None
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        new_user = User(username=username, password=password)
-        db.session.add(new_user)
-        db.session.commit()
-        login_user(new_user)
-        return redirect(url_for('dashboard'))
-    return render_template('register.html')
+        if User.query.filter_by(username=username).first():
+            error = 'Username already exists'
+        else:
+            new_user = User(username=username, password=password)
+            db.session.add(new_user)
+            db.session.commit()
+            login_user(new_user)
+            return redirect(url_for('dashboard'))
+    return render_template('register.html', error=error)
+
+
 
 @app.route('/dashboard')
 @login_required
