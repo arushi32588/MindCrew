@@ -1,4 +1,4 @@
-# AI-Mental-Health-Assistant
+# MindCrew: AI-Driven Mental Health Companion
 
 The AI Mental Health Assistant is a web application designed to provide mental health support through various features, including mood tracking, personalized recommendations, achievements, resources, chat support, virtual mental health coach, and stress buster beats! The project leverages modern web technologies and machine learning to create an interactive and user-friendly platform for mental wellness.
 
