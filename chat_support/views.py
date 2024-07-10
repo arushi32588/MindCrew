@@ -7,7 +7,7 @@ from flask_login import login_required
 chat_support_blueprint = Blueprint('chat_support', __name__)
 
 # Initialize the Gemini API with the API key from the environment variable
-genai.configure(api_key='AIzaSyCFoeceKdTmB2WsQgpanU7uCCgGQdKVP4I')
+genai.configure(api_key='My_API_key')
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 def generate_response(prompt):
