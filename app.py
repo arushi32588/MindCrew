@@ -13,7 +13,7 @@ from chat_support.views import chat_support_blueprint
 # Import and configure Google Gemini
 import google.generativeai as genai
 
-genai.configure(api_key='AIzaSyCFoeceKdTmB2WsQgpanU7uCCgGQdKVP4I')
+genai.configure(api_key='My_API_key')
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 app = Flask(__name__)
